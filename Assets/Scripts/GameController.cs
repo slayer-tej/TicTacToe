@@ -11,6 +11,7 @@ public class Player
 {
     public Image panel;
     public String name;
+    public int Score;
     public TextMeshProUGUI indicatorText;
 }
 
@@ -36,23 +37,33 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject gameOverPanel;
     [SerializeField]
-    private GameObject PlayAgain;
+    private GameObject inputPanel;
+    [SerializeField]
+    private Text inputField;
+    [SerializeField]
+    private GameObject OkButton;
+    [SerializeField]
+    private GameObject PlayAgainButton;
     [SerializeField]
     private TextMeshProUGUI[] buttonList;
     private string Playerside;
     private int moveCount;
-   
+    private int HighScore;
+
+
+
 
     private void Awake()
     {
-        SetControllerOnButtons();
         Playerside = "X";
-        SetPlayerIndicator(playerX, playerO);
         moveCount = 0;
         gameOverPanel.SetActive(false);
-        PlayAgain.SetActive(false);
+        PlayAgainButton.SetActive(false);
+        inputPanel.SetActive(true);
+        SetPlayerIndicator(playerX, playerO);
+        SetControllerOnButtons();
     }
-
+  
     private void SetControllerOnButtons()
     {
         for(int i = 0;i < buttonList.Length; i++)
@@ -64,6 +75,15 @@ public class GameController : MonoBehaviour
     public string GetPlayerSide()
     {
         return Playerside;
+    }
+
+    public void SetName()
+    {
+        string name = inputField.text;
+        Debug.Log("Welcome " + name);
+        playerX.name = name;
+        Debug.Log(playerX.name);
+        inputPanel.SetActive(false);
     }
 
     public void EndTurn()
@@ -104,7 +124,7 @@ public class GameController : MonoBehaviour
         else if(moveCount >= 9)
         {
             SetGameOver("Draw!!!");
-            PlayAgain.SetActive(true); 
+            PlayAgainButton.SetActive(true); 
         }
         else
         {
@@ -118,12 +138,14 @@ public class GameController : MonoBehaviour
         if(Playerside == "X")
         {
             SetGameOver(playerX.name + " Won!");
+            playerX.Score++;
         }
         else
         {
             SetGameOver(playerO.name + " Won!");
+            playerO.Score++;
         }
-        PlayAgain.SetActive(true); 
+        PlayAgainButton.SetActive(true); 
     }
 
     private void SetGameOver(string gameovertext)
@@ -172,7 +194,7 @@ public class GameController : MonoBehaviour
         {
             buttonList[i].text = "";
         }
-        PlayAgain.SetActive(false);
+        PlayAgainButton.SetActive(false);
     }
 
     private void ResetBoard(bool toggle)
