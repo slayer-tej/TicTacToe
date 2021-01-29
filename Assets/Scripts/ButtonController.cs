@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
-
+using System;
 
 public class ButtonController : MonoBehaviour
 {
@@ -13,6 +13,7 @@ public class ButtonController : MonoBehaviour
     private Button button;
     [SerializeField]
     private TextMeshProUGUI buttonText;
+    private GameController gameController;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +22,16 @@ public class ButtonController : MonoBehaviour
         buttonText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
+    internal void SetController(GameController Controller)
+    {
+        gameController = Controller;
+    }
+
     public void SetSpace()
     {
-        buttonText.text = Playerside;
+        buttonText.text = gameController.GetPlayerSide();
         button.interactable = false;
+        gameController.EndTurn();
 
     }
 
