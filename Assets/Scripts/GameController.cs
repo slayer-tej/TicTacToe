@@ -48,7 +48,6 @@ public class GameController : MonoBehaviour
     private TextMeshProUGUI[] buttonList;
     private string Playerside;
     private int moveCount;
-    private int HighScore;
 
 
 
@@ -139,6 +138,7 @@ public class GameController : MonoBehaviour
         {
             SetGameOver(playerX.name + " Won!");
             playerX.Score++;
+            ScoreController.Instance.SetHighScore(playerX.Score);
         }
         else
         {
