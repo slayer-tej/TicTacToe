@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using UnityEngine.UI;
@@ -10,8 +9,6 @@ using System;
 public class Player
 {
     public Image panel;
-    public String name;
-    public int Score;
     public TextMeshProUGUI indicatorText;
 }
 
@@ -37,6 +34,8 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject gameOverPanel;
     [SerializeField]
+    private GameObject ScoreBoard;
+    [SerializeField]
     private GameObject inputPanel;
     [SerializeField]
     private Text inputField;
@@ -45,11 +44,16 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject PlayAgainButton;
     [SerializeField]
+    private GameObject highScoresButton;
+    [SerializeField]
     private TextMeshProUGUI[] buttonList;
     private string Playerside;
     private int moveCount;
-
-
+    private bool isToggled = false;
+    [SerializeField]
+    private ScoreBoardEntryData EntryData;
+    [SerializeField]
+    ScoreBoardController scoreBoardController;
 
 
     private void Awake()
@@ -61,8 +65,16 @@ public class GameController : MonoBehaviour
         inputPanel.SetActive(true);
         SetPlayerIndicator(playerX, playerO);
         SetControllerOnButtons();
+        ScoreBoard.SetActive(false);
+        GetScoreBoard();
     }
-  
+   
+
+    private void GetScoreBoard()
+    {
+       scoreBoardController = ScoreBoard.GetComponent<ScoreBoardController>();
+    }
+
     private void SetControllerOnButtons()
     {
         for(int i = 0;i < buttonList.Length; i++)
@@ -80,8 +92,7 @@ public class GameController : MonoBehaviour
     {
         string name = inputField.text;
         Debug.Log("Welcome " + name);
-        playerX.name = name;
-        Debug.Log(playerX.name);
+        EntryData.entryName = name;
         inputPanel.SetActive(false);
     }
 
@@ -136,16 +147,15 @@ public class GameController : MonoBehaviour
         ResetBoard(false);
         if(Playerside == "X")
         {
-            SetGameOver(playerX.name + " Won!");
-            playerX.Score++;
-            ScoreController.Instance.SetHighScore(playerX.Score);
+            SetGameOver(EntryData.entryName + " Won!");
+            EntryData.entryScore++;
+            scoreBoardController.AddEntry(EntryData);
         }
         else
         {
-            SetGameOver(playerO.name + " Won!");
-            playerO.Score++;
+            SetGameOver(playerO + " Won!");
         }
-        PlayAgainButton.SetActive(true); 
+        PlayAgainButton.SetActive(true);
     }
 
     private void SetGameOver(string gameovertext)
@@ -211,6 +221,11 @@ public class GameController : MonoBehaviour
 
         inactive.panel.color = inactiveColor.panelColor;
         inactive.indicatorText.color = inactiveColor.textColor;
+    }
+    public void ShowHighScores()
+    {
+        isToggled = isToggled ? false : true;
+        ScoreBoard.SetActive(isToggled);
 
     }
 }

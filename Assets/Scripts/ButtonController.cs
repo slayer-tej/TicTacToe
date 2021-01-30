@@ -15,7 +15,6 @@ public class ButtonController : MonoBehaviour
     private TextMeshProUGUI buttonText;
     private GameController gameController;
 
-    // Start is called before the first frame update
     void Start()
     {
         button = GetComponent<Button>();
