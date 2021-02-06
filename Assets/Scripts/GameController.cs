@@ -68,7 +68,6 @@ public class GameController : MonoBehaviour
         ScoreBoard.SetActive(false);
         GetScoreBoard();
     }
-   
 
     private void GetScoreBoard()
     {
@@ -153,7 +152,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            SetGameOver(playerO + " Won!");
+            SetGameOver("You Lost Dumb Ass");
         }
         PlayAgainButton.SetActive(true);
     }
@@ -214,6 +213,7 @@ public class GameController : MonoBehaviour
             buttonList[i].GetComponentInParent<Button>().interactable = toggle;
         }
     }
+
     private void SetPlayerIndicator(Player active,Player inactive)
     {
         active.panel.color = activeColor.panelColor;
@@ -222,6 +222,7 @@ public class GameController : MonoBehaviour
         inactive.panel.color = inactiveColor.panelColor;
         inactive.indicatorText.color = inactiveColor.textColor;
     }
+
     public void ShowHighScores()
     {
         isToggled = isToggled ? false : true;

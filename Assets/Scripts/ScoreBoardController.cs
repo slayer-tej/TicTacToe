@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
@@ -24,8 +23,11 @@ public class ScoreBoardController : MonoBehaviour
     private int maxScoreBoardEntries = 5;
     [SerializeField]
     private Transform highScoresHolder;
+    //[SerializeField]
+    private GameObject m_scoreBoardEntryObject;
     [SerializeField]
-    private GameObject scoreBoardEntryObject;
+    private LoadAssetBundles m_loadAssetBundle;
+
 
     private string SavePath => $"{Application.dataPath}/HighScores.json";
 
@@ -34,7 +36,9 @@ public class ScoreBoardController : MonoBehaviour
         ScoreBoardSaveData savedScores =  GetSavedScores();
         UpdateUI(savedScores);
         SaveScores(savedScores);
+        m_loadAssetBundle = gameObject.GetComponent<LoadAssetBundles>();
     }
+
 
     public void AddEntry(ScoreBoardEntryData scoreBoardEntryData)
     {
@@ -69,7 +73,10 @@ public class ScoreBoardController : MonoBehaviour
         }
        foreach(ScoreBoardEntryData highscore in savedScores.highScores)
         {
-            Instantiate(scoreBoardEntryObject, highScoresHolder).GetComponent<SetScore>().SetBoard(highscore);
+            m_scoreBoardEntryObject = m_loadAssetBundle.GetBundleObject();
+
+            Instantiate(m_scoreBoardEntryObject, highScoresHolder).ScoreCard.GetComponent<SetScore>().SetBoard(highscore);
+
         }
     }
 
