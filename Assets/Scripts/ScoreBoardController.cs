@@ -24,7 +24,7 @@ public class ScoreBoardController : MonoBehaviour
     [SerializeField]
     private Transform highScoresHolder;
     //[SerializeField]
-    private GameObject m_scoreBoardEntryObject;
+    private UnityEngine.Object m_scoreBoardEntryObject;
     [SerializeField]
     private LoadAssetBundles m_loadAssetBundle;
 
@@ -75,7 +75,8 @@ public class ScoreBoardController : MonoBehaviour
         {
             m_scoreBoardEntryObject = m_loadAssetBundle.GetBundleObject();
 
-            Instantiate(m_scoreBoardEntryObject, highScoresHolder).ScoreCard.GetComponent<SetScore>().SetBoard(highscore);
+            GameObject scoreCard = Instantiate(m_scoreBoardEntryObject, highScoresHolder) as GameObject;
+            scoreCard.GetComponent<SetScore>().SetBoard(highscore);
 
         }
     }
