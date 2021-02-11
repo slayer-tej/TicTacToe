@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
-using System;
 
 public class ButtonController : MonoBehaviour
 {
@@ -15,7 +12,7 @@ public class ButtonController : MonoBehaviour
     private TextMeshProUGUI buttonText;
     private GameController gameController;
 
-    void Start()
+    void Start() 
     {
         button = GetComponent<Button>();
         buttonText = GetComponentInChildren<TextMeshProUGUI>();
