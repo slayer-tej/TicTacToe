@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 478187262
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: bundletictactoe.1
+      Dependencies: {}

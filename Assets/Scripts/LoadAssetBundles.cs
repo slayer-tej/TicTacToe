@@ -31,5 +31,4 @@ public class LoadAssetBundles : MonoBehaviour
         Object obj = remoteAssetBundle.LoadAsset<Object>(assetName);
         return obj;
     }
-
 }

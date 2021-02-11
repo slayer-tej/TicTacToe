@@ -25,7 +25,6 @@ public class ScoreBoardController : MonoBehaviour
     [SerializeField]
     private Transform highScoresHolder;
     private UnityEngine.Object m_scoreBoardEntryObject;
-    [SerializeField]
     private LoadAssetBundles m_loadAssetBundle;
 
     private string SavePath => $"{Application.dataPath}/HighScores.json";
@@ -33,10 +32,11 @@ public class ScoreBoardController : MonoBehaviour
     private void Start()
     {
         ScoreBoardSaveData savedScores =  GetSavedScores();
-        m_loadAssetBundle = gameObject.GetComponent<LoadAssetBundles>();
+        m_loadAssetBundle = gameObject.GetComponentInParent<LoadAssetBundles>();
         UpdateUI(savedScores);
         SaveScores(savedScores);
     }
+
 
     public void AddEntry(ScoreBoardEntryData scoreBoardEntryData)
     {
