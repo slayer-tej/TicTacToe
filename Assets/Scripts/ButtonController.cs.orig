@@ -1,0 +1,39 @@
+﻿using UnityEngine.UI;
+using UnityEngine;
+using TMPro;
+
+public class ButtonController : MonoBehaviour
+{
+    [SerializeField]
+    private string Playerside;
+    [SerializeField]
+    private Button button;
+    [SerializeField]
+    private TextMeshProUGUI buttonText;
+    private GameController gameController;
+
+<<<<<<< HEAD
+    void Start() 
+=======
+    // Start is called before the first frame update
+    void Start()
+>>>>>>> 467e75a3f131192f560682d5e32f8b1b4ad7e614
+    {
+        button = GetComponent<Button>();
+        buttonText = GetComponentInChildren<TextMeshProUGUI>();
+    }
+
+    internal void SetController(GameController Controller)
+    {
+        gameController = Controller;
+    }
+
+    public void SetSpace()
+    {
+        buttonText.text = gameController.GetPlayerSide();
+        button.interactable = false;
+        gameController.EndTurn();
+
+    }
+
+}
