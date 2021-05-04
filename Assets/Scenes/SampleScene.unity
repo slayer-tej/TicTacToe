@@ -2142,17 +2142,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879909679}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400108708}
-  m_Father: {fileID: 1133318750}
-  m_RootOrder: 20
+  m_Father: {fileID: 1803225953}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -1168, y: -424}
   m_SizeDelta: {x: 383, y: 960}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &879909681
@@ -2169,8 +2169,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxScoreBoardEntries: 5
   highScoresHolder: {fileID: 400108708}
-  scoreBoardEntryObject: {fileID: 4589944356132485748, guid: e3a874bb73a866346af6fc427143a8a9,
-    type: 3}
 --- !u!223 &879909682
 Canvas:
   m_ObjectHideFlags: 0
@@ -2452,7 +2450,6 @@ RectTransform:
   - {fileID: 1417669436}
   - {fileID: 1411426048}
   - {fileID: 1803225953}
-  - {fileID: 879909680}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3635,6 +3632,7 @@ GameObject:
   - component: {fileID: 1803225956}
   - component: {fileID: 1803225955}
   - component: {fileID: 1803225954}
+  - component: {fileID: 1803225957}
   m_Layer: 5
   m_Name: HighScore
   m_TagString: Untagged
@@ -3652,7 +3650,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 879909680}
   m_Father: {fileID: 1133318750}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3752,6 +3751,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803225952}
   m_CullTransparentMesh: 0
+--- !u!114 &1803225957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803225952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e5fc179b2979d4ab3dbb664e7e5616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bundleUrl: https://drive.google.com/uc?export=download&id=1gZRUp9S8WuUC_oh9qbLE0oRT-CkNt2wQ
+  assetName: EntryHighScore
 --- !u!114 &1820025031 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1607130971663262353, guid: c88a85c52f5477842a608470021c91b0,
